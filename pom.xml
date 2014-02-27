@@ -131,6 +131,9 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${version.war.plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
 			</plugin>
 			<!-- JBoss AS plugin to deploy war -->
 			<plugin>
