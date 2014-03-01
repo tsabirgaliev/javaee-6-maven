@@ -1,7 +1,10 @@
 package kz.bee.example.ejb;
 
+import org.junit.Test;
+
 public class EjbServiceTest extends EjbService {
-	public void testSayHello() {
-		
-	}
+    @Test
+    public void testSayHello() {
+        assert "Hello, Anonymous".equals(sayHello(null));
+    }
 }

@@ -9,11 +9,12 @@ import kz.bee.example.ejb.EjbService;
 
 @Path("/")
 public class RestService {
-	@Inject
-	EjbService ejbService;
+    @Inject
+    EjbService ejbService;
 
-	@GET @Path("/hello/{name}")
-	public String sayHello(@PathParam("name") String name) {
-		return ejbService.sayHello(name);
-	}
+    @GET
+    @Path("/hello/{name}")
+    public String sayHello(@PathParam("name") String name) {
+        return ejbService.sayHello(name);
+    }
 }

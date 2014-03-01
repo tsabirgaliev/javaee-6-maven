@@ -18,21 +18,21 @@ import kz.bee.example.ejb.EjbService;
 @RunWith(Arquillian.class)
 public class RestServiceTest {
 
-  @Deployment
-  public static JavaArchive createDeployment() {
-    return ShrinkWrap.create(JavaArchive.class)
-        .addClasses(RestService.class, EjbService.class)
-        .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-  }
+    @Deployment
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addClasses(RestService.class, EjbService.class)
+                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+    }
 
-  @Inject
-  RestService restService;
+    @Inject
+    RestService restService;
 
-  @Test
-	public void testSayHelloA() {
-	  String response = restService.sayHello("Tair");
-	  
-	  assertEquals(response, "Hello, Tair");
-	  
-	}
+    @Test
+    public void testSayHelloA() {
+        String response = restService.sayHello("Tair");
+
+        assertEquals(response, "Hello, Tair");
+
+    }
 }
