@@ -1,11 +1,11 @@
-package kz.bee.example.rest;
+package com.example.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import kz.bee.example.ejb.EjbService;
+import com.example.ejb.EjbService;
 
 @Path("/")
 public class RestService {

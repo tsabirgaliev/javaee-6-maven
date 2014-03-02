@@ -1,4 +1,4 @@
-package kz.bee.example.ejb;
+package com.example.ejb;
 
 import javax.ejb.Stateless;
 

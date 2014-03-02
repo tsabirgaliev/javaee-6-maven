@@ -136,12 +136,6 @@
 			<scope>test</scope>
 		</dependency>
 
-        <dependency>
-            <groupId>org.codehaus.sonar-plugins.java</groupId>
-            <artifactId>sonar-jacoco-listeners</artifactId>
-            <version>1.5</version>
-            <scope>test</scope>
-        </dependency>
 	</dependencies>
 
 	<build>
@@ -162,19 +156,13 @@
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>${version.jboss.maven.plugin}</version>
 			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${version.surefire.plugin}</version>
-                <configuration>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>org.sonar.java.jacoco.JUnitListener</value>
-                        </property>
-                    </properties>
-                </configuration>
-			</plugin>
-		</plugins>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${version.surefire.plugin}</version>
+            </plugin>
+
+        </plugins>
 	</build>
 
 	<repositories>
@@ -213,10 +201,6 @@
 	</pluginRepositories>
 	<profiles>
 		<profile>
-			<!-- The default profile skips all tests, though you can tune it to run 
-				just unit tests based on a custom pattern -->
-			<!-- Seperate profiles are provided for running all tests, including Arquillian 
-				tests that execute in the specified container -->
 			<id>default</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -233,10 +217,6 @@
 			</build>
 		</profile>
 		<profile>
-			<!-- An optional Arquillian testing profile that executes tests in your 
-				JBoss EAP instance -->
-			<!-- This profile will start a new JBoss EAP instance, and execute the 
-				test, shutting it down when done -->
 			<!-- Run with: mvn clean test -Parq-jbossas-managed -->
 			<id>arq-jbossas-managed</id>
 			<dependencies>
@@ -248,9 +228,6 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<!-- An optional Arquillian testing profile that executes tests in a remote 
-				JBoss EAP instance -->
-			<!-- Run with: mvn clean test -Parq-jbossas-remote -->
 			<id>arq-jbossas-remote</id>
 			<dependencies>
 				<dependency>
@@ -260,5 +237,34 @@
 				</dependency>
 			</dependencies>
 		</profile>
+        <profile>
+            <id>sonar</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.codehaus.sonar-plugins.java</groupId>
+                    <artifactId>sonar-jacoco-listeners</artifactId>
+                    <version>1.5</version>
+                    <scope>test</scope>
+                </dependency>
+
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${version.surefire.plugin}</version>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.sonar.java.jacoco.JUnitListener</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
 	</profiles>
 </project>

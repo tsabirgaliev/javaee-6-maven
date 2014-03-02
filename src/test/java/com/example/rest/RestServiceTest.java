@@ -1,5 +1,6 @@
-package kz.bee.example.rest;
+package com.example.rest;
 
+import com.example.ejb.EjbService;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -12,8 +13,6 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-
-import kz.bee.example.ejb.EjbService;
 
 @RunWith(Arquillian.class)
 public class RestServiceTest {
