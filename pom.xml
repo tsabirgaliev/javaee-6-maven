@@ -27,7 +27,7 @@
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
-		
+
 	</properties>
 
 
@@ -126,7 +126,7 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-jacoco</artifactId>
-			<version>1.0.0.Final-SNAPSHOT</version>
+			<version>1.0.0.Alpha6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -135,7 +135,6 @@
 			<version>0.6.3.201306030806</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -157,12 +156,12 @@
 				<version>${version.jboss.maven.plugin}</version>
 			</plugin>
 
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${version.surefire.plugin}</version>
-            </plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${version.surefire.plugin}</version>
+			</plugin>
 
-        </plugins>
+		</plugins>
 	</build>
 
 	<repositories>
@@ -174,16 +173,6 @@
 			</releases>
 			<snapshots>
 				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>jboss-snapshots-repository</id>
-			<url>http://repository.jboss.org/nexus/content/repositories/snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
@@ -209,6 +198,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${version.surefire.plugin}</version>
 						<configuration>
 							<skip>true</skip>
 						</configuration>
@@ -237,34 +227,34 @@
 				</dependency>
 			</dependencies>
 		</profile>
-        <profile>
-            <id>sonar</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.sonar-plugins.java</groupId>
-                    <artifactId>sonar-jacoco-listeners</artifactId>
-                    <version>1.5</version>
-                    <scope>test</scope>
-                </dependency>
+		<profile>
+			<id>sonar</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.codehaus.sonar-plugins.java</groupId>
+					<artifactId>sonar-jacoco-listeners</artifactId>
+					<version>1.5</version>
+					<scope>test</scope>
+				</dependency>
 
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${version.surefire.plugin}</version>
-                        <configuration>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>org.sonar.java.jacoco.JUnitListener</value>
-                                </property>
-                            </properties>
-                        </configuration>
-                    </plugin>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${version.surefire.plugin}</version>
+						<configuration>
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>org.sonar.java.jacoco.JUnitListener</value>
+								</property>
+							</properties>
+						</configuration>
+					</plugin>
 
-                </plugins>
-            </build>
-        </profile>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
