@@ -1,0 +1,41 @@
+= JavaEE 6 Maven project quickstart
+
+== Features
+
+* Targets http://www.jboss.org/products/eap[Red Hat JBoss Enterprise Application Platform 6.2]
+* Red Hat/JBoss maven repos
+* JUnit for unit tests
+* http://arquillian.org[Arquillian] for in-container tests
+* Code coverage for in-container tests with JaCoCo
+* http://www.sonarqube.org[Sonar] reporting with code coverage per-test
+* JavaEE APIs: CDI, JAX-RS, EJB
+
+== Getting started
+
+[source,bash]
+....
+$ mvn clean package
+
+$ JBOSS_HOME=/opt/jboss-eap-6.2 mvn sonar:sonar \
+    -Dsonar.host.url=http://localhost:9000 \
+    -Dsonar.jdbc.url=jdbc:postgresql://localhost/sonar \
+    -Dsonar.jdbc.username=sonar \
+    -Dsonar.jdbc.password=sonar
+....
+
+Make sure to replace settings with your own. 
+
+== Roadmap
+
+* In-container integration tests as a separate module
+* Present more technologies
+** JPA + DBUnit
+** http://deltaspike.apache.org[Deltaspike]
+* Functional testing with http://arquillian.org/modules/drone-extension/[Drone]
+* http://scala-lang.org[Scala] as a second language?
+* http://scalatest.org[ScalaTest] + http://scalacheck.org[ScalaCheck] for generating tests?
+* http://www.webjars.org[Webjars]?
+
+== Resources
+
+* http://www.packtpub.com/arquillian-testing-guide/book[Arquillian Testing Guide Book]
